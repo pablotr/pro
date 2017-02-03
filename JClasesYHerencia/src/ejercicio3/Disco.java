@@ -1,24 +1,24 @@
 package ejercicio3;
 
-class Disco extends Multimedia {
+public class Disco extends Multimedia {
     
     private final String genero;
     
-    Disco (String titulo, String autor, String formato, int duracion, String genero) {
+    public Disco (String titulo, String autor, String formato, int duracion, String genero) {
         super(titulo, autor, formato, duracion);
         this.genero = genero;
     }
     
-    String getGenero() {
+    public String getGenero() {
         return genero;
     }
     
     @Override
     public String toString() {
-        return super.toString()+"\nGenero: "+genero+"\n";
+        return super.toString()+"Genero: "+genero+"\n";
     }
     
-    protected static Multimedia inputMedia() {
+    public static Multimedia inputMedia() {
         Disco disco;
         boolean ctrl;
         do {

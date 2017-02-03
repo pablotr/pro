@@ -1,21 +1,21 @@
 package ejercicio3;
 
-class Pelicula extends Multimedia {
+public class Pelicula extends Multimedia {
     
     private final String mainActor;
     private final String mainActriz;
     
-    Pelicula(String titulo, String autor, String formato, int duracion, String actor, String actriz) {
+    public Pelicula(String titulo, String autor, String formato, int duracion, String actor, String actriz) {
         super(titulo, autor, formato, duracion);
         mainActor = actor;
         mainActriz = actriz;
     }
     
-    String getMainActor() {
+    public String getMainActor() {
         return mainActor;
     }
     
-    String getMainActriz() {
+    public String getMainActriz() {
         return mainActriz;
     }
     

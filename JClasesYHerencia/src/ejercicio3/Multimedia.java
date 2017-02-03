@@ -50,6 +50,7 @@ abstract public class Multimedia {
         boolean x = false;
         try {
             Integer.parseInt(duracion);
+            x = true;
         } catch (NumberFormatException e) {
             System.out.println("Introduzca la duración con el formato adecuado, usando únicamente números");
         }

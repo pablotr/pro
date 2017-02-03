@@ -1,22 +1,22 @@
 package ejercicio3;
 
-class ListaMultimedia {
-    private final Multimedia[] media;
+public class ListaMultimedia {
+    private final Multimedia[] lista;
     private int totalMedia;
 
-    ListaMultimedia(int maximo) {
-        media = new Multimedia[maximo];
+    public ListaMultimedia(int maximo) {
+        lista = new Multimedia[maximo];
         totalMedia = 0;
     }
     
-    int size() {
+    public int size() {
         return totalMedia;
     }
    
-    boolean add(Multimedia m) {
+    public boolean add(Multimedia m) {
         boolean x;
-        if (totalMedia < media.length) {
-            media[totalMedia] = m;
+        if (totalMedia < lista.length) {
+            lista[totalMedia] = m;
             totalMedia ++;
             x = true;
         } else {
@@ -25,15 +25,15 @@ class ListaMultimedia {
         return x;
     }
     
-    Multimedia get(int posicion){
+    public Multimedia get(int posicion){
         
-        return media[posicion];
+        return lista[posicion];
     }
     
-    int indexOf(Multimedia m) {
+    public int indexOf(Multimedia m) {
         int index = 0;
         for (int i=0; i<totalMedia; i++) {
-            if (media[i] == m) {
+            if (lista[i] == m) {
                 index = i;
             } else {
                 index = -1;
@@ -46,9 +46,131 @@ class ListaMultimedia {
     public String toString() {
         String str="";
         for (int i=0; i<totalMedia; i++) {
-            str = str.concat("\n"+media[i]);
+            str = str.concat("\n"+lista[i]);
         }
         return str;
     }
     
+    public int duracionTotal() {
+        int min = 0;
+        for (int i=0;i<totalMedia;i++) {
+            min += lista[i].getDuracion();
+        }
+        return min;
+    }
+    
+    public int totalAtributosMismoValor(String media, String atr, String valorAtr) {
+        int total = 0;
+        try {    
+            if (Class.forName("ejercicio3."+media) == Disco.class) {
+                for (int i=0;i<totalMedia;i++) {
+                    if (lista[i] instanceof Disco) {
+                        switch (atr) {
+                            case "titulo":
+                                if (lista[i].getTitulo().equals(valorAtr)) {
+                                    total++;
+                                }
+                                break;
+                            case "autor":
+                                if (lista[i].getAutor().equals(valorAtr)) {
+                                    total++;
+                                }
+                                break;
+                            case "formato":
+                                if (lista[i].getFormato().equals(valorAtr)) {
+                                    total++;
+                                }
+                                break;
+                            case "duracion":
+                                if (lista[i].getDuracion() == (Integer.valueOf(valorAtr))) {
+                                    total++;
+                                }
+                                break;
+                            case "genero":
+                                if (((Disco)lista[i]).getGenero().equals(valorAtr)) {
+                                    total++;
+                                }
+                                break;
+                            default:
+                                System.out.println("ERROR: No existe el Atributo (atr) introducido");
+                                break;
+                        }
+                    }
+                }
+            } else if (Class.forName("ejercicio3."+media) == Pelicula.class) {
+                for (int i=0;i<totalMedia;i++) {
+                    if (lista[i] instanceof Pelicula) {
+                        switch (atr) {
+                            case "titulo":
+                                if (lista[i].getTitulo().equals(valorAtr)) {
+                                    total++;
+                                }
+                                break;
+                            case "autor":
+                                if (lista[i].getAutor().equals(valorAtr)) {
+                                    total++;
+                                }
+                                break;
+                            case "formato":
+                                if (lista[i].getFormato().equals(valorAtr)) {
+                                    total++;
+                                }
+                                break;
+                            case "duracion":
+                                if (lista[i].getDuracion() == (Integer.valueOf(valorAtr))) {
+                                    total++;
+                                }
+                                break;
+                            case "mainActor":
+                                if (((Pelicula)lista[i]).getMainActor().equals(valorAtr)) {
+                                    total++;
+                                }
+                                break;
+                            case "mainActriz":
+                                if (((Pelicula)lista[i]).getMainActriz().equals(valorAtr)) {
+                                    total++;
+                                }
+                                break;
+                            default:
+                                System.out.println("ERROR: No existe el Atributo (atr) introducido");
+                                break;
+                        }
+                    }
+                }
+            } else if (Class.forName("ejercicio3."+media) == Multimedia.class) {
+                for (int i=0;i<totalMedia;i++) {
+                    switch (atr) {
+                        case "titulo":
+                            if (lista[i].getTitulo().equals(valorAtr)) {
+                                total++;
+                            }
+                            break;
+                        case "autor":
+                            if (lista[i].getAutor().equals(valorAtr)) {
+                                total++;
+                            }
+                            break;
+                        case "formato":
+                            if (lista[i].getFormato().equals(valorAtr)) {
+                                total++;
+                            }
+                            break;
+                        case "duracion":
+                            if (lista[i].getDuracion() == (Integer.valueOf(valorAtr))) {
+                                total++;
+                            }
+                            break;
+                        default:
+                            System.out.println("ERROR: No existe el Atributo (atr) introducido");
+                            break;
+                    }
+                }
+            }
+        } catch (ClassNotFoundException a) {
+            System.out.println("ERROR: No existe la Clase (media) introducida");
+        } catch (Exception b) {
+            System.out.println("ERROR");
+        }
+        return total;
+    }
 }

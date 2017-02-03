@@ -59,4 +59,9 @@ public class CocheCambioAutomatico extends Coche{
             this.marcha = 6;
         }
     }
+    
+    @Override
+    public String toString() {
+        return super.toString()+"Tipo: Automático\n";
+    }
 }

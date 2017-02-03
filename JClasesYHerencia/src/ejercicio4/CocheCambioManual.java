@@ -26,4 +26,9 @@ public class CocheCambioManual extends Coche {
             System.out.println(e.getMessage());
         }
     }
+    
+    @Override
+    public String toString() {
+        return super.toString()+"Tipo: Manual\n";
+    }
 }

@@ -15,11 +15,8 @@ public class App2 {
         System.out.print(miLista);
         
         System.out.println("\n");
-        System.out.println("Cree un objeto de tipo Disco introduciendo el título "
-                + "y el autor de una de las películas de la lista. Para el resto "
-                + "de los argumentos se utilizan valores no significativos.");
-        
-        Multimedia disco = Disco.inputMedia();
+                
+        Multimedia disco = new Disco(miLista.get(1).getTitulo(), miLista.get(1).getAutor(), "4", 4, "4");
         miLista.add(disco);
         
         System.out.println("");
