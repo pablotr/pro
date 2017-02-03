@@ -57,7 +57,7 @@ class Pelicula extends Multimedia {
             System.out.print("Introduzca actriz principal: ");
             String actriz = INPUT.nextLine();
            
-            if (Multimedia.testDuracion(duracion) || Pelicula.testActores(actor, actriz)) {
+            if (Multimedia.testDuracion(duracion) && Pelicula.testActores(actor, actriz)) {
                 peli = new Pelicula(titulo, director, formato, Integer.parseInt(duracion), actor, actriz);
                 ctrl = true;
             } else {

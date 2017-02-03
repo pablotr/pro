@@ -12,32 +12,6 @@ abstract public class Coche {
         this.velocidad = 0;
     }
     
-    protected boolean testFrenar(int a) {
-        boolean x = false;
-        try {
-            if (frenar(a)<0) {
-                throw new Exception("No se permite la marcha atrás (velocidad negativa)");
-            }
-            x = true;
-        } catch (Exception e) {
-                System.out.println(e.getMessage());
-            }
-        return x; 
-    }
-    
-    protected boolean testMarcha(int marchaOVelocidad) {
-        boolean x = false;
-        try {
-            if (marchaOVelocidad<0) {
-                throw new Exception("No se permite la marcha atrás (velocidad o marcha negativa)");
-            }
-            x = true;
-        } catch (Exception e) {
-                System.out.println(e.getMessage());
-            }
-        return x; 
-    }
-    
     protected String getMatricula() {
         return matricula;
     }
@@ -50,28 +24,26 @@ abstract public class Coche {
         return velocidad;
     }
     
-    protected int acelerar(int v) {
+    protected void acelerar(int v) {
         this.velocidad += v;
-        return this.velocidad;
     }
     
-    protected int frenar(int v) {
+    protected void frenar(int v) {
         try {
-            if ((this.velocidad - v) < 0) {
-                throw new Exception("Si frenas tantos vas a tener una vel negativa");
+            if (this.velocidad - v < 0) {
+                throw new Exception("La marcha atrás no está permitada: no puedes desacelerar tanto");
             }
             this.velocidad -= v;
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }
-        return this.velocidad;
     } 
     
-    public String toStrint() {
-        return "Matrícula: "+matricula+"\nMarcha: "+marcha+"\nVelocidad: ";
+    public String toString() {
+        return "Matrícula: "+matricula+"\nMarcha: "+marcha+"\nVelocidad: "+velocidad+"\n";
     }
     
-    protected void cambiaMarcha(int marcha) {
+    protected void cambiarMarcha(int marcha) {
         this.marcha = marcha;
     }
 }
