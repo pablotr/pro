@@ -46,7 +46,9 @@ public class ListaMultimedia {
     public String toString() {
         String str="";
         for (int i=0; i<totalMedia; i++) {
-            str = str.concat("\n"+lista[i]);
+            str = str.concat(lista[i].toString());
+            if (i < totalMedia-1)
+                str = str.concat("\n");
         }
         return str;
     }

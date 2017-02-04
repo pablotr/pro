@@ -1,14 +1,11 @@
 package ejercicio5;
 
-import ejercicio3.Disco;
-import ejercicio3.ListaMultimedia;
-import ejercicio3.Multimedia;
-import ejercicio3.Pelicula;
+import ejercicio3.*;
 
 public class App {
     
     public static void main(String[] args) {
-        System.out.println("RUNNING: ejercicio5.App");
+        System.out.println("RUNNING: JClasesYHerencia.ejercicio5.App\n");
         
         ListaMultimedia miLista = new ListaMultimedia(10);
         

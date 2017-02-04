@@ -22,7 +22,6 @@ public class Disco extends Multimedia {
         Disco disco;
         boolean ctrl;
         do {
-            System.out.println("");
             System.out.print("Introduzca título: ");
             String titulo = INPUT.nextLine();
             System.out.print("Introduzca autor: ");

@@ -5,11 +5,11 @@ import java.util.Scanner;
 public class App {
     
     public static void main(String[] args) {
-        System.out.println("RUNNING: ejericio4.App");
+        System.out.println("RUNNING: JClasesYHerencia.ejericio4.App\n");
         
         Scanner input = new Scanner(System.in);
         
-        System.out.println("\n----CREAR COCHE----");
+        System.out.println("----CREAR COCHE----");
         System.out.print("Introduzca la matrícula: ");
         String matricula = input.nextLine();
         System.out.println("Seleccione el tipo (introduzca el número): ");
@@ -22,17 +22,17 @@ public class App {
             switch (resp) { 
                 case "1":
                     Coche manual = new CocheCambioManual(matricula);
-                    System.out.println(manual);
+                    System.out.print("\n"+manual);
                     manual.acelerar(60);
                     manual.cambiarMarcha(3);
-                    System.out.println(manual);
+                    System.out.print("\n"+manual);
                     ctrl = true;
                     break;
                 case "2":
                     Coche auto = new CocheCambioAutomatico(matricula);
-                    System.out.println(auto);
+                    System.out.print("\n"+auto);
                     auto.acelerar(60);
-                    System.out.println(auto);
+                    System.out.print("\n"+auto);
                     ctrl = true;
                     break;
                 default:

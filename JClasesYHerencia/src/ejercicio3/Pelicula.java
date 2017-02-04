@@ -43,7 +43,6 @@ public class Pelicula extends Multimedia {
         Pelicula peli;
         boolean ctrl;
         do {
-            System.out.println("");
             System.out.print("Introduzca título: ");
             String titulo = INPUT.nextLine();
             System.out.print("Introduzca director: ");
@@ -56,7 +55,7 @@ public class Pelicula extends Multimedia {
             String actor = INPUT.nextLine();
             System.out.print("Introduzca actriz principal: ");
             String actriz = INPUT.nextLine();
-           
+            
             if (Multimedia.testDuracion(duracion) && Pelicula.testActores(actor, actriz)) {
                 peli = new Pelicula(titulo, director, formato, Integer.parseInt(duracion), actor, actriz);
                 ctrl = true;

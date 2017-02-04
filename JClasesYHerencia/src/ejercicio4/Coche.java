@@ -24,8 +24,8 @@ abstract public class Coche {
         return velocidad;
     }
     
-    protected void acelerar(int v) {
-        this.velocidad += v;
+    protected void acelerar(int a) {
+        this.velocidad += a;
     }
     
     protected void frenar(int v) {
