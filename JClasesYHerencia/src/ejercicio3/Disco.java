@@ -33,7 +33,7 @@ public class Disco extends Multimedia {
             System.out.print("Introduzca género: ");
             String genero = INPUT.nextLine();
            
-            if (Multimedia.testDuracion(duracion)) {
+            if (Multimedia.validarDuracion(duracion)) {
                 disco = new Disco(titulo, director, formato, Integer.parseInt(duracion), genero);
                 ctrl = true;
             } else {

@@ -17,18 +17,27 @@ public class CocheCambioManual extends Coche {
     
     @Override
     public void cambiarMarcha (int marcha) {
-        try {
-            if (marcha < 0) {
-                throw new Exception("marcha atras prohibida");
-            }
+        if (validarMarcha(marcha)) {
             this.marcha = marcha;
-        } catch (Exception e) {
-            System.out.println(e.getMessage());
         }
     }
     
     @Override
     public String toString() {
         return super.toString()+"Tipo: Manual\n";
+    }
+    
+    private static boolean validarMarcha(int marcha) {
+        boolean x;
+        try {
+            if (marcha < 0) {
+                throw new Exception("La marcha atrás no está permitada: no puedes poner una marcha negativa");
+            }
+            x = true;
+        } catch (Exception e) {
+            e.getMessage();
+            x = false;
+        }
+        return x;
     }
 }

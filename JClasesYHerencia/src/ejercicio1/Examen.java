@@ -1,10 +1,10 @@
 package ejercicio1;
 
 public class Examen {
-    private String nombre;
-    private String aula;
-    private Fecha fecha;
-    private Hora hora;
+    private final String nombre;
+    private final String aula;
+    private final Fecha fecha;
+    private final Hora hora;
     
     public Examen (String nombre, String aula, Fecha fecha, Hora hora) {
         this.nombre = nombre;
@@ -13,7 +13,8 @@ public class Examen {
         this.hora = hora;
     }
     
+    @Override
     public String toString() {
-        return "Asignatura: "+nombre+"\nAula: "+aula+"\nFecha: "+fecha+"\nHora: "+hora;
+        return "Asignatura: "+nombre+"\nAula: "+aula+"\nFecha: "+fecha+"\nHora: "+hora+"\n";
     }
 }

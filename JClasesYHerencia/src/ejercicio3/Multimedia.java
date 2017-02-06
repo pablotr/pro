@@ -46,7 +46,7 @@ abstract public class Multimedia {
         return null;
     }
     
-    protected static boolean testDuracion(String duracion) {
+    protected static boolean validarDuracion(String duracion) {
         boolean x = false;
         try {
             Integer.parseInt(duracion);

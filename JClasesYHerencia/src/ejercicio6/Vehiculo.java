@@ -10,6 +10,7 @@ public abstract class Vehiculo {
         velocidad = 0;
     }
     
+    @Override
     public String toString() {
         return "Matrícula: "+matricula+"\nVelocidad: "+velocidad+" km/h\n";
     }

@@ -1,9 +1,5 @@
 package ejercicio2;
 
-import java.util.ArrayList;
-import java.util.Iterator;
-
-
 public class Poligono {
     
     Punto[] puntos;
@@ -35,10 +31,11 @@ public class Poligono {
         for (int i=1; i<puntos.length; i++) {
             peri += puntos[i].distancia(puntos[i-1]);
         }
-        peri+= puntos[0].distancia(puntos[puntos.length-1]);
+        peri += puntos[0].distancia(puntos[puntos.length-1]);
         return peri;
     }
     
+    @Override
     public String toString() {
         String str = "";
         for (int i=0; i<puntos.length; i++) {

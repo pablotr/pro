@@ -8,8 +8,8 @@ abstract public class Coche {
     
     protected Coche (String matricula) {
         this.matricula = matricula;
-        this.marcha = 0;
-        this.velocidad = 0;
+        marcha = 0;
+        velocidad = 0;
     }
     
     protected String getMatricula() {
@@ -24,26 +24,36 @@ abstract public class Coche {
         return velocidad;
     }
     
-    protected void acelerar(int a) {
-        this.velocidad += a;
+    protected void acelerar(int v) {
+        velocidad += v;
     }
     
     protected void frenar(int v) {
-        try {
-            if (this.velocidad - v < 0) {
-                throw new Exception("La marcha atrás no está permitada: no puedes desacelerar tanto");
-            }
-            this.velocidad -= v;
-        } catch (Exception e) {
-            System.out.println(e.getMessage());
+        if (validarFrenada(v)) {
+            velocidad -= v;
         }
     } 
     
+    @Override
     public String toString() {
         return "Matrícula: "+matricula+"\nMarcha: "+marcha+"\nVelocidad: "+velocidad+"\n";
     }
     
     protected void cambiarMarcha(int marcha) {
         this.marcha = marcha;
+    }
+    
+    private boolean validarFrenada(int v) {
+        boolean x;
+        try {
+            if (v > velocidad) {
+                throw new Exception("La marcha atrás no está permitada: no puedes desacelerar tanto");
+            }
+            x = true;
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+            x = false;
+        }
+        return x;
     }
 }

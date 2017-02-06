@@ -24,7 +24,7 @@ public class Pelicula extends Multimedia {
         return super.toString()+"Actor principal: "+mainActor+"\nActriz principal: "+mainActriz+"\n";
     }
     
-    private static boolean testActores(String actor, String actriz) {
+    private static boolean validarActores(String actor, String actriz) {
         boolean x;
         try {
             if (actor.isEmpty() && actriz.isEmpty()) {
@@ -56,7 +56,7 @@ public class Pelicula extends Multimedia {
             System.out.print("Introduzca actriz principal: ");
             String actriz = INPUT.nextLine();
             
-            if (Multimedia.testDuracion(duracion) && Pelicula.testActores(actor, actriz)) {
+            if (Multimedia.validarDuracion(duracion) && Pelicula.validarActores(actor, actriz)) {
                 peli = new Pelicula(titulo, director, formato, Integer.parseInt(duracion), actor, actriz);
                 ctrl = true;
             } else {

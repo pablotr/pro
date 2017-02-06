@@ -35,6 +35,7 @@ public class Fecha {
         return año;
     }
     
+    @Override
     public String toString() {
         return dia+"/"+mes+"/"+año;
     }

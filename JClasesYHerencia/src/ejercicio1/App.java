@@ -17,8 +17,7 @@ public class App {
         actual.setHora(10);
         actual.setMinuto(45);
         
-        System.out.println("");
-        System.out.println(matematicas);
+        System.out.print(matematicas);
     }
     
 }

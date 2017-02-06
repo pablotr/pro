@@ -18,6 +18,7 @@ public class Hora {
         this.minuto = minuto;
     }
     
+    @Override
     public String toString() {
         return hora+":"+minuto;
     }
