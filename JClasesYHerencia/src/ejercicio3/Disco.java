@@ -19,8 +19,8 @@ public class Disco extends Multimedia {
     }
     
     public static Multimedia inputMedia() {
-        Disco disco;
-        boolean ctrl;
+        Disco disco = null;
+        boolean ctrl = false;
         do {
             System.out.print("Introduzca título: ");
             String titulo = INPUT.nextLine();
@@ -33,12 +33,11 @@ public class Disco extends Multimedia {
             System.out.print("Introduzca género: ");
             String genero = INPUT.nextLine();
            
-            if (Multimedia.validarDuracion(duracion)) {
+            try {
                 disco = new Disco(titulo, director, formato, Integer.parseInt(duracion), genero);
                 ctrl = true;
-            } else {
-                disco = null;
-                ctrl = false;
+            } catch (Exception e) {
+                System.out.println(e.getMessage());
             }
         } while (!ctrl);
         

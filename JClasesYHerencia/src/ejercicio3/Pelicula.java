@@ -24,24 +24,17 @@ public class Pelicula extends Multimedia {
         return super.toString()+"Actor principal: "+mainActor+"\nActriz principal: "+mainActriz+"\n";
     }
     
-    private static boolean validarActores(String actor, String actriz) {
-        boolean x;
-        try {
-            if (actor.isEmpty() && actriz.isEmpty()) {
-                throw new Exception("Debe registrarse por lo menos un actor principal o una actriz principal");
-            }
-            x = true;
-        } catch (Exception e) {
-            System.out.println(e.getMessage());
-            x = false;
+    private static void validarActores(String actor, String actriz) throws Exception {
+        if (actor.isEmpty() && actriz.isEmpty()) {
+            throw new Exception("Debe registrarse por lo menos un actor principal o una actriz principal");
         } 
-        return x;
     }
+        
     
     
     public static Multimedia inputMedia() {
-        Pelicula peli;
-        boolean ctrl;
+        Pelicula peli = null;
+        boolean ctrl = false;
         do {
             System.out.print("Introduzca título: ");
             String titulo = INPUT.nextLine();
@@ -56,12 +49,12 @@ public class Pelicula extends Multimedia {
             System.out.print("Introduzca actriz principal: ");
             String actriz = INPUT.nextLine();
             
-            if (Multimedia.validarDuracion(duracion) && Pelicula.validarActores(actor, actriz)) {
+            try {
+                validarActores(actor, actriz);
                 peli = new Pelicula(titulo, director, formato, Integer.parseInt(duracion), actor, actriz);
                 ctrl = true;
-            } else {
-                peli = null;
-                ctrl = false;
+            } catch (Exception e){
+                System.out.println(e.getMessage());
             }
         } while (!ctrl);
         

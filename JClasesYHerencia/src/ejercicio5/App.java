@@ -12,17 +12,23 @@ public class App {
         for (int i=1;i<=3;i++) {
 //            miLista.add(Disco.inputMedia());
             if (i%2!=0) {
-                miLista.add(new Disco(Integer.toString(i), Integer.toString(i), Integer.toString(i), i, "rock"));
+                miLista.add(new Disco(Integer.toString(i), Integer.toString(i), 
+                        Integer.toString(i), i, "rock"));
             } else {
-                miLista.add(new Disco(Integer.toString(i), Integer.toString(i), Integer.toString(i), i, "jazz"));
+                miLista.add(new Disco(Integer.toString(i), Integer.toString(i), 
+                        Integer.toString(i), i, "jazz"));
             }
         }
         for (int i=1;i<=3;i++) {
 //            miLista.add(Pelicula.inputMedia());
             if (i==1) {
-                miLista.add(new Pelicula(Integer.toString(i), Integer.toString(i), Integer.toString(i), i, Integer.toString(i), ""));
+                miLista.add(new Pelicula(Integer.toString(i), 
+                        Integer.toString(i), Integer.toString(i), i, 
+                        Integer.toString(i), ""));
             } else {
-                miLista.add(new Pelicula(Integer.toString(i), Integer.toString(i), Integer.toString(i), i, Integer.toString(i), Integer.toString(i)));
+                miLista.add(new Pelicula(Integer.toString(i), 
+                        Integer.toString(i), Integer.toString(i), i, 
+                        Integer.toString(i), Integer.toString(i)));
             }
         }
         

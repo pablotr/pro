@@ -29,11 +29,14 @@ abstract public class Coche {
     }
     
     protected void frenar(int v) {
-        if (validarFrenada(v)) {
+        try {
+            validarFrenada(v);
             velocidad -= v;
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
         }
     } 
-    
+      
     @Override
     public String toString() {
         return "Matrícula: "+matricula+"\nMarcha: "+marcha+"\nVelocidad: "+velocidad+"\n";
@@ -43,17 +46,9 @@ abstract public class Coche {
         this.marcha = marcha;
     }
     
-    private boolean validarFrenada(int v) {
-        boolean x;
-        try {
-            if (v > velocidad) {
-                throw new Exception("La marcha atrás no está permitada: no puedes desacelerar tanto");
-            }
-            x = true;
-        } catch (Exception e) {
-            System.out.println(e.getMessage());
-            x = false;
+    private void validarFrenada(int v) throws Exception {
+        if (v > velocidad) {
+            throw new Exception("La marcha atrás no está permitada: no puedes desacelerar tanto");
         }
-        return x;
     }
 }
