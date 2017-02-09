@@ -29,7 +29,12 @@ public class Camion extends Vehiculo {
     
     @Override
     public String toString() {
-        return super.toString()+remolque;
+        if (remolque != null) {
+            return super.toString()+remolque;
+        } else {
+            return super.toString();
+        }
+        
     }
     
     private void validarAceleracion(int v) throws Exception {
