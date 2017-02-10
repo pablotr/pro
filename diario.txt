@@ -2,3 +2,6 @@
 -Implementar mis propias Clases de Excepciones y comprobar sí así solo se aplican los catchs a esas y a ninguna más.
 Repasar que forma tengo de lanzar y tratar las excepciones y pulirla y unificarla en todos los paquetes del proyecto JClasesYHerencia.
 '\n' después del 'RUNNING'?
+
+20170210
+-Arreglar RUNNING
