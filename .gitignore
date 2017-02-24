@@ -1,6 +1,7 @@
 JFicheros/prueba.txt
 JFicheros/nuevo.txt
 *~
+other/
 
 *.class
 
@@ -18,3 +19,5 @@ hs_err_pid*
 /JClasesYHerencia/build/
 /JFicheros/nbproject/private/
 /JFicheros/build/
+/ignoredprojects/U10-Ejercicios1/nbproject/private/
+/other/U10-Ejercicios1/nbproject/private/
