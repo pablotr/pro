@@ -6,6 +6,6 @@ public class Cola extends ColeccionSimple{
     }
     
     public void añadir(Object obj) {
-       getLista().add((getLista().size()-1), obj);
+       getLista().add(obj);
     }
 }
