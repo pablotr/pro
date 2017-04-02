@@ -2,6 +2,7 @@ JFicheros/prueba.txt
 JFicheros/nuevo.txt
 *~
 other/
+*.zip
 
 *.class
 
