@@ -11,7 +11,7 @@ package calculadorasistemas;
  */
 public class CalculadorSistemas extends javax.swing.JFrame {
     
-    private boolean inputDecimal = true;
+    private boolean inputDecimal = true; /*'Decimal' está seleccionado por defecto*/
     private boolean inputBinario = false;
     private boolean inputOctal = false;
     private boolean inputHexadecimal = false;
@@ -47,6 +47,8 @@ public class CalculadorSistemas extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         jTextFieldOutput = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTextPaneNotificacion = new javax.swing.JTextPane();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -122,6 +124,10 @@ public class CalculadorSistemas extends javax.swing.JFrame {
 
         jLabel5.setText("Output:");
 
+        jTextPaneNotificacion.setEditable(false);
+        jTextPaneNotificacion.setFont(new java.awt.Font("Ubuntu", 0, 12)); // NOI18N
+        jScrollPane1.setViewportView(jTextPaneNotificacion);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -132,19 +138,6 @@ public class CalculadorSistemas extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(30, 30, 30)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel2)
-                            .addComponent(jLabel3)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jButtonDecimal)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jButtonBinario)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jButtonOctal)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jButtonHexadecimal)))
-                        .addContainerGap(68, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jRadioButtonHexadecimal)
@@ -159,7 +152,24 @@ public class CalculadorSistemas extends javax.swing.JFrame {
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel5)
                                     .addComponent(jTextFieldOutput, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                        .addGap(0, 0, Short.MAX_VALUE))))
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel2)
+                            .addComponent(jLabel3)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jButtonDecimal)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jButtonBinario)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jButtonOctal)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jButtonHexadecimal)))
+                        .addContainerGap(68, Short.MAX_VALUE))))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane1)
+                .addGap(12, 12, 12))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -192,15 +202,22 @@ public class CalculadorSistemas extends javax.swing.JFrame {
                     .addComponent(jButtonOctal)
                     .addComponent(jButtonHexadecimal)
                     .addComponent(jButtonDecimal))
-                .addContainerGap(30, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButtonBinarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonBinarioActionPerformed
-        String result = aBinario(jTextFieldInput.getText());
+        jTextPaneNotificacion.setText("");
+        try {
+            String result = aBinario(jTextFieldInput.getText());
         jTextFieldOutput.setText(result);
+        } catch(NumberFormatException e) {
+            jTextPaneNotificacion.setText("ERROR: El formato del número introducido no se corresponde con el formato seleccionado (decimal, binario, octal o hexadecimal)");
+        }
     }//GEN-LAST:event_jButtonBinarioActionPerformed
 
     private void jRadioButtonDecimalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButtonDecimalActionPerformed
@@ -248,31 +265,46 @@ public class CalculadorSistemas extends javax.swing.JFrame {
     }//GEN-LAST:event_jRadioButtonHexadecimalActionPerformed
 
     private void jButtonDecimalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonDecimalActionPerformed
-        String result = aDecimal(jTextFieldInput.getText());
+        jTextPaneNotificacion.setText("");
+        try {
+            String result = aDecimal(jTextFieldInput.getText());
         jTextFieldOutput.setText(result);
+        } catch(NumberFormatException e) {
+            jTextPaneNotificacion.setText("ERROR: El formato del número introducido no se corresponde con el formato seleccionado (decimal, binario, octal o hexadecimal)");
+        } 
     }//GEN-LAST:event_jButtonDecimalActionPerformed
 
     private void jButtonOctalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonOctalActionPerformed
-        String result = aOctal(jTextFieldInput.getText());
+        jTextPaneNotificacion.setText("");
+        try {
+            String result = aOctal(jTextFieldInput.getText());
         jTextFieldOutput.setText(result);
+        } catch(NumberFormatException e) {
+            jTextPaneNotificacion.setText("ERROR: El formato del número introducido no se corresponde con el formato seleccionado (decimal, binario, octal o hexadecimal)");
+        }
     }//GEN-LAST:event_jButtonOctalActionPerformed
 
     private void jButtonHexadecimalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonHexadecimalActionPerformed
-        String result = aHexadecimal(jTextFieldInput.getText());
+        jTextPaneNotificacion.setText("");
+        try {
+            String result = aHexadecimal(jTextFieldInput.getText());
         jTextFieldOutput.setText(result);
+        } catch(NumberFormatException e) {
+            jTextPaneNotificacion.setText("ERROR: El formato del número introducido no se corresponde con el formato seleccionado (decimal, binario, octal o hexadecimal)");
+        }
     }//GEN-LAST:event_jButtonHexadecimalActionPerformed
     
     private String aDecimal(String num) {
         int i;
         if (inputBinario) {
-            i = Integer.parseInt(num, 8);
+            i = Integer.parseInt(num, 2);
         } else if (inputOctal) {
             i = Integer.parseInt(num, 8);
         } else if (inputHexadecimal) {
             i = Integer.parseInt(num, 16);
         } else {
-            return num;
-        }
+            i = Integer.parseInt(num);
+        }  
         String deci = Integer.toString(i);
         return deci;
     }
@@ -286,7 +318,7 @@ public class CalculadorSistemas extends javax.swing.JFrame {
         } else if (inputHexadecimal) {
             i = Integer.parseInt(num, 16);
         } else {
-            return num;
+            i = Integer.parseInt(num, 2);
         }
         String bin = Integer.toBinaryString(i);
         return bin;
@@ -301,7 +333,7 @@ public class CalculadorSistemas extends javax.swing.JFrame {
         } else if (inputHexadecimal) {
             i = Integer.parseInt(num, 16);
         } else {
-            return num;
+            i = Integer.parseInt(num, 8);
         }
         String octal = Integer.toOctalString(i);
         return octal;
@@ -316,12 +348,12 @@ public class CalculadorSistemas extends javax.swing.JFrame {
         } else if (inputOctal) {
             i = Integer.parseInt(num, 8);
         } else {
-            return num;
+            i = Integer.parseInt(num, 16);
         }
         String hexa = Integer.toHexString(i);
         return hexa;
     }
-    
+        
     /**
      * @param args the command line arguments
      */
@@ -373,7 +405,9 @@ public class CalculadorSistemas extends javax.swing.JFrame {
     private javax.swing.JRadioButton jRadioButtonDecimal;
     private javax.swing.JRadioButton jRadioButtonHexadecimal;
     private javax.swing.JRadioButton jRadioButtonOctal;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextField jTextFieldInput;
     private javax.swing.JTextField jTextFieldOutput;
+    private javax.swing.JTextPane jTextPaneNotificacion;
     // End of variables declaration//GEN-END:variables
 }
