@@ -41,12 +41,51 @@ public class OptionPane {
                     
                     break;
                 case 4:
+                    String html = ""
+                            + "<html>"
+                            + "<head>"
+                                + "<style>"
+                                + "table, th, td {border: 1px ridge black; border-collapse: collapse;}"
+                                + "</style>"
+                            + "</head>"
+                            + "<body>"
+                                + "<p style=\"text-align:center;\">Mensaje Centrado</p>"
+                                + "<table>"
+                                    + "<tr>"
+                                        + "<th>Uno</th><th>Dos</th><th>Tres</th>"
+                                    + "</tr>"
+                                    + "<tr>"
+                                        + "<td>celda1</td><td>celda2</td><td>celda3</td>"
+                                    + "</tr>"
+                                + "</table>"
+                            + "</body>"
+                            + "</html>";
+                    JOptionPane.showMessageDialog(null, html, "HTML: Mensaje", JOptionPane.INFORMATION_MESSAGE);
                     break;
                 case 5:
+                    String strInput = (String) JOptionPane.showInputDialog(null, "Escribe algo", "Entrada", JOptionPane.QUESTION_MESSAGE, null, null, null);
+                    if (strInput != null) {
+                        JOptionPane.showMessageDialog(null, "Cadena: "+strInput, "Mensaje", JOptionPane.INFORMATION_MESSAGE);
+                    }
                     break;
                 case 6:
+                    int intInput = 0;
+                    strInput = (String) JOptionPane.showInputDialog(null, "Escribe un entero", "Entrada", JOptionPane.QUESTION_MESSAGE, null, null, null);
+                    boolean ctrl = false;
+                    try {
+                        if (strInput != null) {
+                            intInput = Integer.parseInt(strInput);
+                            ctrl = true;
+                        }     
+                    } catch (NumberFormatException e) {
+                        JOptionPane.showMessageDialog(null, "Introduzca un número entero, usando sólo carácteres numéricos", "Error", JOptionPane.ERROR_MESSAGE);
+                    }
+                    if (ctrl) {
+                        JOptionPane.showMessageDialog(null, "Número: "+intInput, "Mensaje", JOptionPane.INFORMATION_MESSAGE);
+                    }
                     break;
                 case 7:
+                    opcion = -1;
                     break;
             }
         } while(opcion != -1);
