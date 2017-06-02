@@ -41,6 +41,8 @@ public class DialogModal extends javax.swing.JFrame {
         jPanel2 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
 
+        jDialogSecundaria.setModal(true);
+
         jPanel3.setLayout(new java.awt.BorderLayout());
 
         jLabel2.setText("Esta es la ventana secundaria. Haz click en el botón para volver a la ventana principal");
